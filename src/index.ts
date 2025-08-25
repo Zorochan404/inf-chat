@@ -8,6 +8,7 @@ import authRoutes from "./auth/authRoutes.js";
 import chatRoutes from "./chatSession/chatSessionRoutes.js";
 import { setSocketIO } from "./chatSession/chatSessionController.js";
 import { authenticateToken } from "./middlewares/auth.js";
+import groupRoutes from "./studyGroup/studyGroupRoutes.js";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use(express.json());
 // Routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/chat", authenticateToken, chatRoutes);
+app.use('/api/v1/study-group', groupRoutes)
 
 // Root endpoint
 app.get("/", (req, res) => {
